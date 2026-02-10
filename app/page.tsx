@@ -312,7 +312,7 @@ export default function Home() {
                   />
                   <input
                     type="date"
-                    className="w-full p-4 pl-12 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 dark:focus:ring-red-500/20 font-medium text-lg text-gray-600 dark:text-gray-200 transition-all bg-gray-50 dark:bg-gray-800 focus:bg-white dark:focus:bg-gray-900"
+                    className="w-full p-4 pl-12 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 dark:focus:ring-red-500/20 font-medium text-lg text-gray-600 dark:text-gray-200 transition-all bg-gray-50 dark:bg-gray-800 focus:bg-white dark:focus:bg-gray-900 dark:[color-scheme:dark]"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                   />
