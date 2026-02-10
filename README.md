@@ -4,7 +4,7 @@ A Next.js based Bus Ticket Booking System designed for Bus Conductors and Passen
 
 ## 🚀 Live Demo
 
-Check out the live application here: **[https://your-project-name.vercel.app](https:your-project-namevercelapp)**
+Check out the live application here: **[https://our-bus-booking.vercel.app/](https://our-bus-booking.vercel.app/)**
 
 ## Features
 
@@ -69,6 +69,7 @@ To minimize boarding time, the system implements a **Back-to-Front** sorting alg
 
 ## Project Structure
 
+```bash
 ├── app/
 │ ├── booking/ # Booking Page (Seat Selection)
 │ ├── admin/ # Conductor Dashboard (Algorithm)
@@ -83,6 +84,7 @@ To minimize boarding time, the system implements a **Back-to-Front** sorting alg
 │ └── busConfig.ts # Seat Layout Configuration
 └── context/
 └── UserContext.tsx # Global User State
+```
 
 ## Algorithm Implementation
 
