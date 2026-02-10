@@ -43,10 +43,21 @@ export default function SeatMap({ from, to, date, mobile }: SeatMapProps) {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     loadSeats();
+    setSelectedIds([]);
+    setPassengers([]);
+    setDiscount(0);
+    setCoupon("");
+    setCouponMessage("");
+    setMessage("");
   }, [loadSeats]);
 
   const handleSeatClick = (seat: SeatData) => {
     if (seat.status === "booked") return;
+
+    if (discount > 0) {
+      setDiscount(0);
+      setCouponMessage("Selection changed. Please re-apply coupon.");
+    }
 
     if (selectedIds.includes(seat.id)) {
       setSelectedIds(selectedIds.filter((id) => id !== seat.id));
@@ -58,10 +69,16 @@ export default function SeatMap({ from, to, date, mobile }: SeatMapProps) {
       }
       setSelectedIds([...selectedIds, seat.id]);
       setPassengers([...passengers, { seatId: seat.id, name: "", age: "" }]);
+      setMessage("");
     }
   };
 
   const applyCoupon = () => {
+    if (selectedIds.length === 0) {
+      setCouponMessage("Select seats first.");
+      return;
+    }
+
     if (coupon.toUpperCase() === "FIRSTBUS") {
       const history = getBookings(mobile);
       const activeBookings = history.filter((b) => b.status === "BOOKED");
@@ -130,6 +147,10 @@ export default function SeatMap({ from, to, date, mobile }: SeatMapProps) {
       loadSeats();
       setSelectedIds([]);
       setPassengers([]);
+      setDiscount(0);
+      setCoupon("");
+      setCouponMessage("");
+      setMessage("");
     } else {
       setMessage("Booking Failed.");
     }
@@ -268,7 +289,7 @@ export default function SeatMap({ from, to, date, mobile }: SeatMapProps) {
           </div>
           <div className="flex justify-between text-xl font-extrabold text-gray-900 dark:text-white border-t dark:border-gray-700 pt-2">
             <span>Total</span>
-            <span>₹{finalTotal}</span>
+            <span>₹{finalTotal > 0 ? finalTotal : 0}</span>
           </div>
         </div>
 
