@@ -58,6 +58,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (!filteredDate) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFilteredDate(new Date().toISOString().split("T")[0]);
     } else {
       loadData();
